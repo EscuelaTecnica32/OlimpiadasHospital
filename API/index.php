@@ -5,6 +5,66 @@ include('conexion.php');
 $consulta = $_GET['consulta'];
 if ($consulta) {
     switch ($consulta) {
+        case 'obtenerTiempoRespuestaNormal':
+            $sql = "SELECT round(avg(TIMESTAMPDIFF(SECOND, hora, hora_respondida))) as tiempo FROM llamados l inner join boton b on l.lugar = b.id where b.emergencia = 0;";
+            
+            $query = $conexion->query($sql) or die($query . mysqli_error($conexion));
+            $json = array();
+            while ($row = $query->fetch_assoc()) {
+                $json[] = array(
+                    "tiempo" => $row['tiempo'],
+                );
+            }
+            echo json_encode($json);
+            break;
+        case 'obtenerTiempoRespuestaEmergencia':
+            $sql = "SELECT round(avg(TIMESTAMPDIFF(SECOND, hora, hora_respondida))) as tiempo FROM llamados l inner join boton b on l.lugar = b.id where b.emergencia = 1;";
+            
+            $query = $conexion->query($sql) or die($query . mysqli_error($conexion));
+            $json = array();
+            while ($row = $query->fetch_assoc()) {
+                $json[] = array(
+                    "tiempo" => $row['tiempo'],
+                );
+            }
+            echo json_encode($json);
+            break;
+        case 'obtenerMedicos':
+            $sql = "SELECT * FROM medico";
+            
+            $query = $conexion->query($sql) or die($query . mysqli_error($conexion));
+            $json = array();
+            while ($row = $query->fetch_assoc()) {
+                $json[] = array(
+                    "id" => $row['id'],
+                    "matricula" => $row['matricula'],
+                    "nombre" => $row['nombre'],
+                    "apellido" => $row['apellido'],
+                    "nickname" => $row['nickname'],
+                    "password" => $row['password'],
+                    "mail" => $row['mail'],
+                    "cant_llamados" => $row['cant_llamadas'],
+                    "foto" => $row['foto']
+                );
+            }
+            echo json_encode($json);
+            break;
+        case 'obtenerPacientes':
+            $sql = "SELECT * FROM paciente";
+            
+            $query = $conexion->query($sql) or die($query . mysqli_error($conexion));
+            $json = array();
+            while ($row = $query->fetch_assoc()) {
+                $json[] = array(
+                    "id" => $row['id'],
+                    "nombre" => $row['nombre'],
+                    "apellido" => $row['apellido'],
+                    "documento" => $row['documento'],
+                    "edad" => $row['edad']
+                );
+            }
+            echo json_encode($json);
+            break;
         case 'obtenerLlamadosEmergencia':
             $sql = "
             SELECT l.id,l.hora,l.hora_respondida,l.respondida,
@@ -60,7 +120,7 @@ if ($consulta) {
                 );
             }
             echo json_encode($json);
-            break;
+        break;
         case 'tomarLlamado':
             if(isset($_GET['medico']) && isset($_GET['id'])){
                 $sql = "UPDATE llamados set hora_respondida = now(), medico = ".$_GET['medico'].", respondida = 1 where id = ".$_GET['id'];
