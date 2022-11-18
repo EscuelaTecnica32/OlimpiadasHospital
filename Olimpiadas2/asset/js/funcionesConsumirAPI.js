@@ -66,3 +66,36 @@ const obtenerMedicos = () => {
         });
     }
 }
+
+const obtenerPacientes = () => {
+    let ajax = new XMLHttpRequest();
+    let metodo = "GET";
+    let url = "https://olimpiadaset32.000webhostapp.com/hospital/index.php?consulta=obtenerPacientes";
+    ajax.open(metodo, url);
+    ajax.send();
+    ajax.addEventListener("load", mostrarDatos);
+    ajax.addEventListener("error", console.log);
+
+    function mostrarDatos() {
+        console.log("hola");
+        let respuesta = JSON.parse(ajax.responseText);
+
+        document.getElementById("tablaPacientes").innerHTML = '';
+
+        respuesta.forEach(paciente => {
+
+            document.getElementById("tablaPacientes").innerHTML += `
+                <tr>
+                    <td>${paciente.documento}</td>
+                    <td>${paciente.nombre}</td>
+                    <td>${paciente.apellido}</td>
+                    <td>${paciente.ubicacion} - ${paciente.piso}° Piso</td>
+                    <td>
+                        <a href="medicos.html" title="${paciente.medico}">${paciente.medico}</a>
+                    </td>
+                </tr>
+
+            `
+        });
+    }
+}

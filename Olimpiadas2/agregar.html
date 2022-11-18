@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,42 +8,43 @@
     <title>Document</title>
     <link rel="stylesheet" href="asset/css/agregar.css">
 </head>
+
 <body>
     <div class="container">
-        <div class="registroA">
+        <form class="registroA">
             <h2>Agregar</h2>
-            <form action="#">
-                <div class="user-details">
-                    <div class="inputs">
-                        <input type="text" placeholder="Area Requerida">
-                    </div>
-                    <div class="inputs">
-                        <input type="text" placeholder="Enfermeros Disponibles">
-                    </div>
-                    <div class="zone-details">
-                        <input type="radio" name="zone" id="dot-1">
-                        <input type="radio" name="zone" id="dot-2">
-                        <input type="radio" name="zone" id="dot-3">
-                        <span class="zone-title">Zona</span>
-                        <div class="category">
-                            <label for="dot-1">
-                                <span class="dot one"></span>
-                                <span class="zone">Roja</span>
-                            </label>
-                            <label for="dot-2">
-                                <span class="dot two"></span>
-                                <span class="zone">Amarilla</span>
-                            </label>
-                            <label for="dot-3">
-                                <span class="dot three"></span>
-                                <span class="zone">Verde</span>
-                            </label>
-                        </div>
-                    </div>
-                    <input type="submit" value="Registrar" class="entra">
+            <div class="user-details">
+                <div class="inputs">
+                    <input type="text" placeholder="Area Requerida" required>
                 </div>
-            </form>
-        </div>
+                <div class="inputs">
+                    <input type="text" placeholder="Enfermeros Disponibles" required>
+                </div>
+                <div class="zone-details">
+                    <input type="radio" name="zone" id="dot-1">
+                    <input type="radio" name="zone" id="dot-2">
+                    <input type="radio" name="zone" id="dot-3">
+                    <span class="zone-title">Zona</span>
+                    <div class="category">
+                        <label for="dot-1">
+                            <span class="dot one"></span>
+                            <span class="zone">Roja</span>
+                        </label>
+                        <label for="dot-2">
+                            <span class="dot two"></span>
+                            <span class="zone">Amarilla</span>
+                        </label>
+                        <label for="dot-3">
+                            <span class="dot three"></span>
+                            <span class="zone">Verde</span>
+                        </label>
+                    </div>
+                </div>
+                <input type="submit" value="Registrar" class="entra">
+            </div>
+        </form>
     </div>
+
 </body>
+
 </html>

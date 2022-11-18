@@ -14,10 +14,22 @@
         <form id="login">
             <h2>Bienvenido</h2>
             <div class="inputs">
-                <input id="email" type="text" placeholder="Correo" required>
+                <input 
+                    id="email" 
+                    type="text" 
+                    placeholder="Ingrese su Correo electronico"
+                    pattern="[a-zA-Z0-9!#$%&'*_+-]([\.]?[a-zA-Z0-9!#$%&'*_+-])+@[a-zA-Z0-9]([^@&%$\/()=?¿!.,:;]|\d)+[a-zA-Z0-9][\.][a-zA-Z]{2,4}([\.][a-zA-Z]{2})?"
+                    required
+                >
             </div>
             <div class="inputs">
-                <input id="password" type="password" placeholder="Contraseña" required>
+                <input 
+                    id="password" 
+                    type="password" 
+                    placeholder="Ingrese su Contraseña" 
+                    pattern="[A-Za-z-0-9]{8,16}" 
+                    required
+                >
             </div>
             <div class="error"></div>
             <input type="submit" value="Ingresar" class="ingresar">
@@ -40,38 +52,38 @@
     crossorigin="anonymous"></script>
 <script>
 
-$(document).ready(() => {
-    if(localStorage.getItem('user') !== null) location.href = 'index.html'
+    $(document).ready(() => {
+        if (localStorage.getItem('user') !== null) location.href = 'index.html'
 
-    $('#login').submit(e => {
-        e.preventDefault()
+        $('#login').submit(e => {
+            e.preventDefault()
 
-        $.ajax({
-            url: 'https://olimpiadaset32.000webhostapp.com/hospital/',
-            type: 'GET',
-            dataType: 'json',
-            data: {
-                consulta:'verificarUsuario',
-                email: $('#email').val(),
-                password: $('#password').val()
-            }
-        }).done(response => {
-            if (response != null) {
-                $('.error').html('')
-                localStorage.setItem('user', JSON.stringify(response))
-                location.href = 'index.html';
-            } else {
-                $('.error').html(`
+            $.ajax({
+                url: 'https://olimpiadaset32.000webhostapp.com/hospital/',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    consulta: 'verificarUsuario',
+                    email: $('#email').val(),
+                    password: $('#password').val()
+                }
+            }).done(response => {
+                if (response != null) {
+                    $('.error').html('')
+                    localStorage.setItem('user', JSON.stringify(response))
+                    location.href = 'index.html';
+                } else {
+                    $('.error').html(`
                     <p>
                         <i class="fa-solid fa-triangle-exclamation"></i>
                         Correo electronico o contraseña incorrectos
                     </p>
                 `);
-            }
+                }
+            })
         })
-    })
 
-})
+    })
 
 </script>
 

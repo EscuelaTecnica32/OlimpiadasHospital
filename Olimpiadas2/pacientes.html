@@ -46,39 +46,16 @@
                     <th scope="col">DNI</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
-                    <th scope="col">Registros</th>
+                    <th scope="col">Ubicacion</th>
                     <th scope="col">Enfermero</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tablaPacientes">
                 <tr>
-                    <th>1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>
-                        <img src="" alt="" srcset="">
-                        <a href="">carlos tronfe</a>
-                    </td>
-                </tr>
-                <tr>
-                    <th>2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>
-                        <img src="" alt="" srcset="">
-                        <a href="">carlos tronfe</a>
-                    </td>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                    <td>
-                        <img src="" alt="" srcset="">
-                        <a href="">carlos tronfe</a>
+                    <td class="text-center" colspan="8">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -94,5 +71,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
     integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
     crossorigin="anonymous"></script>
-
+<script src="asset/js/funcionesConsumirAPI.js"></script>
+<script>
+    obtenerPacientes();
+</script>
 </html>
