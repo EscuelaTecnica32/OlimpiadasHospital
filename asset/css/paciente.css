@@ -1,0 +1,23 @@
+.tablaf{
+    background-color: #55E3FA;
+    color: white;
+}
+.tablam{
+    background-color: #8cdfa9;
+    color: white;
+}
+.table-striped{
+    color:#55E3FA;
+}
+input.btn.btn-outline-info:hover{
+    background-color: #9af2ff;
+    color: white;
+    border: none;
+    transition: 240ms;
+}
+input.btn.btn-outline-info{
+    margin-top: 2px;
+}
+button.btn.btn-outline-danger {
+    margin-right: 18px;
+}
