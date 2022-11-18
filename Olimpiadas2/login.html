@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="asset/css/login.css">
+    <title>Iniciar Sesion - Olimpiadas 2022</title>
+</head>
+
+<body>
+    <div class="container">
+        <form id="login">
+            <h2>Bienvenido</h2>
+            <div class="inputs">
+                <input id="email" type="text" placeholder="Correo" required>
+            </div>
+            <div class="inputs">
+                <input id="password" type="password" placeholder="Contraseña" required>
+            </div>
+            <div class="error"></div>
+            <input type="submit" value="Ingresar" class="ingresar">
+            <p>¿No tenés una cuenta? Contactate con el encargardo de área para registrar</p>
+        </form>
+    </div>
+    <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path fill="#ffffff" fill-opacity="1" d="M0,256L60,266.7C120,277,240,299,360,298.7C480,299,600,277,720,261.3C840,245,960,235,1080,240C1200,245,1320,267,1380,277.3L1440,288L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+    </svg> -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#ffffff" fill-opacity="1"
+            d="M0,224L48,213.3C96,203,192,181,288,197.3C384,213,480,267,576,288C672,309,768,299,864,261.3C960,224,1056,160,1152,149.3C1248,139,1344,181,1392,202.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+        </path>
+    </svg>
+    <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffff" fill-opacity="1" d="M0,192L48,186.7C96,181,192,171,288,170.7C384,171,480,181,576,202.7C672,224,768,256,864,240C960,224,1056,160,1152,154.7C1248,149,1344,203,1392,229.3L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg> -->
+</body>
+<script src="https://kit.fontawesome.com/b3b892b65b.js" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+    crossorigin="anonymous"></script>
+<script>
+
+$(document).ready(() => {
+    if(localStorage.getItem('user') !== null) location.href = 'index.html'
+
+    $('#login').submit(e => {
+        e.preventDefault()
+
+        $.ajax({
+            url: 'https://olimpiadaset32.000webhostapp.com/hospital/',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                consulta:'verificarUsuario',
+                email: $('#email').val(),
+                password: $('#password').val()
+            }
+        }).done(response => {
+            if (response != null) {
+                $('.error').html('')
+                localStorage.setItem('user', JSON.stringify(response))
+                location.href = 'index.html';
+            } else {
+                $('.error').html(`
+                    <p>
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        Correo electronico o contraseña incorrectos
+                    </p>
+                `);
+            }
+        })
+    })
+
+})
+
+</script>
+
+</html>
