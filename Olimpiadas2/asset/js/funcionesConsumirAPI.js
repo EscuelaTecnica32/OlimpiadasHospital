@@ -9,7 +9,7 @@ const obtenerTiempoRespuestaNormal = () => {
     ajax.addEventListener("load", mostrarDatos);
     ajax.addEventListener("error", console.log);
 
-    const mostrarDatos = () => {
+    function mostrarDatos() {
         let respuesta = JSON.parse(ajax.responseText);
         document.getElementById("minN").innerHTML = respuesta[0]['tiempo'] + " MIN";
     }
@@ -24,7 +24,7 @@ const obtenerTiempoRespuestaEmergencia = () => {
     ajax.addEventListener("load", mostrarDatos);
     ajax.addEventListener("error", console.log);
 
-    const mostrarDatos = () => {
+    function mostrarDatos() {
         let respuesta = JSON.parse(ajax.responseText);
         document.getElementById("minE").innerHTML = respuesta[0]['tiempo'] + " MIN";
     }
@@ -40,7 +40,8 @@ const obtenerMedicos = () => {
     ajax.addEventListener("load", mostrarDatos);
     ajax.addEventListener("error", console.log);
 
-    const mostrarDatos = () => {
+    function mostrarDatos() {
+        console.log("hola");
         let respuesta = JSON.parse(ajax.responseText);
 
         document.getElementById("tablaMedicos").innerHTML = '';
