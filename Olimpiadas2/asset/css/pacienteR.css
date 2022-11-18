@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    min-height: 100vh;
+    background-color: #55E3FA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.registroM{
+    max-width: 700px;
+    background: #fff;
+    width: 100%;
+    padding: 25px 30px;
+    animation-name: border;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes border{
+    0%{
+        border-radius: 0%;
+    }
+    100%{
+        border-top-right-radius: 40px;
+        border-bottom-left-radius: 40px;
+    }
+}
+h2{
+    font-size: 28px;
+    text-align: center;
+    font-weight: 900;
+    color: #55E3FA;
+    margin-bottom: 15px;
+}
+
+.container  form .user-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+form .user-details .inputs{
+    margin: 20px 0 12px 0;
+    width: calc(100%/2 - 20px);
+    margin-bottom: 20px;
+    font-size: 18px;
+    border-bottom: 2px solid gray;
+}
+
+.inputs input{
+    border: none;
+    outline: none;
+}
+
+.entra{
+    width: 50%;
+    margin-left: 25%;
+    border-radius: 100px;
+    margin-top: 20px;
+    padding: 10px;
+    border: 0;
+    color: #fff;
+    background: linear-gradient(to right, #a6ffcb,#12d8fa,#1fa2ff);
+}
+
+.entra:hover{
+    background: #1fa2ff;
+}
+svg {
+    background-color: transparent;
+    position: absolute;
+    bottom: 0
+}
+input.btn.btn-outline-info{
+    margin-top: 2px;
+}
+button.btn.btn-outline-danger {
+    margin-right: 18px;
+}
+
+@media (max-width: 584px){
+    .container{
+        max-width: 100%;
+    }
+    form .user-details .inputs{
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    .container form .user-details{
+        max-height: 300px;
+        overflow-y:scroll ;
+    }
+    .user-details::-webkit-scrollbar{
+        width: 0;
+    }
+}
